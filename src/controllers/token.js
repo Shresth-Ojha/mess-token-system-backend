@@ -50,7 +50,7 @@ setInterval(() => {
     } catch (error) {
         console.log('error while resetting ', error);
     }
-}, 10000);
+}, 60000);
 
 // cron.schedule('* * * * *', () => {
 //     console.log('lol');
