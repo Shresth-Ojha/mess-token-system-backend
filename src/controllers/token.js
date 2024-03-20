@@ -4,7 +4,7 @@ import cron from 'node-cron';
 const getToken = async (req, res) => {
     const gID = req.body.gID;
     const user = await userModel.findOne({ gID });
-    console.log(user);
+    // console.log(user);
     if (!user) {
         res.send({ msg: "User doesn't exist." });
     } else {
@@ -32,7 +32,7 @@ const useToken = async (req, res) => {
 };
 
 const resetAllToken = async () => {
-    const rse = await userModel.updateMany(
+    await userModel.updateMany(
         {},
         {
             $set: {
@@ -40,20 +40,26 @@ const resetAllToken = async () => {
             },
         }
     );
-    console.log(rse);
 };
 
-setInterval(() => {
-    console.log('hi');
-    try {
-        resetAllToken();
-    } catch (error) {
-        console.log('error while resetting ', error);
-    }
-}, 60000);
 
-// cron.schedule('* * * * *', () => {
-//     console.log('lol');
-// });
+cron.schedule(
+    '30,35 18 * * *',
+    () => {
+        // const date = new Date();
+        // console.log("consoling 1st log")
+        // console.log(
+        //     `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
+        // );
+        try {
+            resetAllToken();
+        } catch (error) {
+            console.log('error while resetting ', error);
+        }
+    },
+    {
+        timezone: 'Asia/Kolkata'
+    }
+);
 
 export { getToken, useToken };

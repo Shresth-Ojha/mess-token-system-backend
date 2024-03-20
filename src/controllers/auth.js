@@ -2,18 +2,16 @@ import { userModel } from '../models/userModel.js';
 
 export const authController = async (req, res) => {
     const fullName = req.body.fullName;
-    console.log(req.body)
+    // console.log(req.body)
     const gID = req.body.gID;
     const user = await userModel.findOne({gID})
     
     if(!user){
         const newUser = new userModel({fullName, gID})
         const result = await newUser.save();
-        console.log("Hi")
         res.send({ msg: 'Registered Now', data: result });
     }
     else {
-        console.log("Bye")
         res.send({msg: "Already Registered", data: user});
     }
 };
