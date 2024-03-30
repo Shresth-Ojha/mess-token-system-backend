@@ -44,7 +44,7 @@ const resetAllToken = async () => {
 
 
 cron.schedule(
-    '10 13 * * *',
+    '24 13 * * *',
     () => {
         // const date = new Date();
         // console.log("consoling 1st log")
