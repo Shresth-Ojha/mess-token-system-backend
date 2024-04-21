@@ -43,7 +43,7 @@ const resetAllToken = async () => {
 };
 
 cron.schedule(
-    '59 20 * * *',
+    '1 21 * * *',
     () => {
         // const date = new Date();
         // console.log("consoling 1st log")
@@ -59,9 +59,6 @@ cron.schedule(
         } catch (error) {
             console.log('error while resetting ', error);
         }
-    },
-    {
-        timezone: 'Asia/Kolkata'
     }
 );
 
