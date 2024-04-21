@@ -43,12 +43,13 @@ const resetAllToken = async () => {
 };
 
 setInterval(() => {
-    console.log('\nInterval is running tho\n');
-}, 4000);
+    console.log('\n--------------Interval------------');
 
-cron.schedule('*/2 * * * * *', () => {
+}, 10000);
+
+cron.schedule('*/4 * * * * *', () => {
     const date = new Date();
-    console.log('running');
+    console.log('\ncronning - ');
     console.log(
         `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
     );

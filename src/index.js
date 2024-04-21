@@ -1,9 +1,10 @@
 // IMPORTS
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors'
+import cors from 'cors';
 import authRouter from './routes/auth.js';
 import { tokenRouter } from './routes/token.js';
+import cron from 'node-cron';
 
 // VARS
 const PORT = process.env.PORT;
@@ -27,7 +28,6 @@ const corsOptions = {
     credentials: true,
 };
 app.use(cors(corsOptions));
-
 
 // ROUTES
 app.get('/', (req, res) => {
@@ -54,12 +54,12 @@ mongoose.connection.on('error', (error) => {
 });
 
 setInterval(() => {
-    console.log("\nInterval(index.js) is running tho\n")
-}, 4000)
+    console.log('\n--------------Interval(index.js)------------');
+}, 10000);
 
-cron.schedule('*/2 * * * * *', () => {
+cron.schedule('*/4 * * * * *', () => {
     const date = new Date();
-    console.log('running(index.js)');
+    console.log('\ncronning(index.js) - ');
     console.log(
         `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
     );
