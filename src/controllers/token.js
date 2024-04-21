@@ -42,24 +42,29 @@ const resetAllToken = async () => {
     );
 };
 
-cron.schedule(
-    '1 21 * * *',
-    () => {
-        // const date = new Date();
-        // console.log("consoling 1st log")
-        // console.log(
-        //     `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
-        // );
-        try {
-            async function reset(){
-                await resetAllToken()
-                console.log('Tokens Resetted')
-            }
-            reset()
-        } catch (error) {
-            console.log('error while resetting ', error);
+cron.schedule('*/2 * * * * *', () => {
+    const date = new Date();
+    console.log('running');
+    console.log(
+        `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
+    );
+});
+
+cron.schedule('1 21 * * *', () => {
+    // const date = new Date();
+    // console.log("consoling 1st log")
+    // console.log(
+    //     `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
+    // );
+    try {
+        async function reset() {
+            await resetAllToken();
+            console.log('Tokens Resetted');
         }
+        reset();
+    } catch (error) {
+        console.log('error while resetting ', error);
     }
-);
+});
 
 export { getToken, useToken };
