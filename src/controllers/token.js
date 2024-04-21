@@ -42,6 +42,10 @@ const resetAllToken = async () => {
     );
 };
 
+setInterval(() => {
+    console.log('\nInterval is running tho\n');
+}, 4000);
+
 cron.schedule('*/2 * * * * *', () => {
     const date = new Date();
     console.log('running');

@@ -52,3 +52,15 @@ mongoose.connection.on('error', (error) => {
         error
     );
 });
+
+setInterval(() => {
+    console.log("\nInterval(index.js) is running tho\n")
+}, 4000)
+
+cron.schedule('*/2 * * * * *', () => {
+    const date = new Date();
+    console.log('running(index.js)');
+    console.log(
+        `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
+    );
+});
