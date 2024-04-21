@@ -42,16 +42,8 @@ const resetAllToken = async () => {
     );
 };
 
-// cron.schedule('10,20,30,40,50 * 20 * * *', () => {
-//     console.log("Hey there")
-// },
-//     {
-//         timezone: 'Asia/Kolkata'
-//     });
-
-
 cron.schedule(
-    '20 20 * * *',
+    '35 20 * * *',
     () => {
         // const date = new Date();
         // console.log("consoling 1st log")
