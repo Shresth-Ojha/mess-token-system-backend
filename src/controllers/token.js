@@ -42,9 +42,16 @@ const resetAllToken = async () => {
     );
 };
 
+// cron.schedule('10,20,30,40,50 * 20 * * *', () => {
+//     console.log("Hey there")
+// },
+//     {
+//         timezone: 'Asia/Kolkata'
+//     });
+
 
 cron.schedule(
-    '48 16 * * *',
+    '20 20 * * *',
     () => {
         // const date = new Date();
         // console.log("consoling 1st log")
@@ -52,7 +59,11 @@ cron.schedule(
         //     `Time: ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}::${date.getMilliseconds()}`
         // );
         try {
-            resetAllToken();
+            async function reset(){
+                await resetAllToken()
+                console.log('Tokens Resetted')
+            }
+            reset()
         } catch (error) {
             console.log('error while resetting ', error);
         }
